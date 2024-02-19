@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+    <footer>
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- <h2>CONTACT US</h2> -->
+                <div class="contact-us-main">
+                        <div class="contact-us">
+                            
+                            <img src="{{url_for('static', filename='images/location.png')}}">
+                            <p><a href="https://www.uaar.edu.pk/"> PMAS
+                                    Rawalpindi, pakistan</a></p>
+                        </div>
+                        <div class="contact-us">
+                            <img src="{{url_for('static', filename='images/phone.png')}}">
+                            <p><a href="tel:+923155560143"> +923155560143 </p></a>
+                        </div>
+                        <div class="contact-us">
+                            <img src="{{url_for('static', filename='images/mail.png')}}">
+                            <p><a href="mailto:abdullahblouch143@gmail.com">DemandForecasting@gmail.com</a></p>
+                        </div>
+                 </div>
+                    <p style="font-size:10.0pt;">Demand forecasting of medicine using social networking data describes future customer
+                        demand of medicine by using past and current sales data of medicine. As we can't forecast
+                        new medicine which is inaccurate, and forecast predicts what people are going to want, how
+                        much and when. By predicting demand forecast of medicine through social networking data
+                        describes future customer demand and growing of company.  </p>
+                    <div class="logos">
+                        <a href="https://www.facebook.com" > <img src="{{url_for('static', filename='images/facebook.png')}}"> </a>
+                        <a href="https://www.twitter.com" > <img src="{{url_for('static', filename='images/twitter.png')}}"></a>
+                       <a href="https://www.linkedin.com" >  <img src="{{url_for('static', filename='images/linked-in.png')}}"></a>
+                       <a href="https://www.google.com" > <img src="{{url_for('static', filename='images/google.png')}}"></a>
+                    </div>
+                    <p style="font-size:8.0pt;">Demand Forecasting © 2023 | All Rights Reserved<br>
+                        Stay Connected
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

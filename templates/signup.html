@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="form">
+        <img src="{{url_for('static', filename='images/icon.png')}}">
+        <div class="container">
+            <form name="signupform" class="form1" action="/signup" method="post" onsubmit="return validateForm()">
+                <h1>Sign Up</h1>
+                <input type="text" placeholder="Name" name="name" id="username">
+                <input type="email" placeholder="Email"  name="email">
+                <input type="password" placeholder="Password" name="password" id="userpass">
+                <input type="password" placeholder="Confirm Password" name="c_password">
+
+                <button class="sign-btn" type="submit" name="save" >Sign Up</button>
+
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}      
+            
+        </div>
+    </div>
+    <script>
+      {
+        document.getElementById("username").value = null;
+        document.getElementsByName("email")[0].value = null;
+        document.getElementById("userpass").value = null;
+        document.getElementsByName("c_password")[0].value = null;
+      };
+    </script>
+    
+    
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+
+
+{% endblock %}
+

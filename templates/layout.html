@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- header start -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Demand Forecasting Of Medicine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet"  href="{{url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet"  href="{{url_for('static', filename='css/slick-theme.css') }}">
+    <link rel="stylesheet"  href="{{url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet"  href="{{url_for('static', filename='css/styles.css') }}">
+
+
+</head>
+<body>
+
+    <header>
+             <div class="header-bottom"> 
+                <div class="container">
+                    <div class="header-main">
+                        <h2><a href="#"><img style="width: 28px; padding-right: 10px;" src="{{url_for('static', filename='images/med1.png')}}">Demand Forecasting OF Medicine</a></h2>
+                    </div>
+                    <div class="navbar">
+                        <ul>
+                            <li><a href="/index">Home          </a></li>
+                            <li><a href="/tutorial">Tutorial </a></li>
+                            <li><a href="/service">Service   </a></li>
+                            <li><a href="/AboutUs">About       </a></li>
+                            <li><a href="/ContactUs">Contact </a></li>
+                            {% if not is_landing_page %}
+                            <li><a href="/logout">Logout     </a></li>
+                        {% endif %}
+                            <!-- <li><a href="/logout">Logout     </a></li> -->
+                        </ul>
+                    </div>
+                
+            </div>
+    </header>
+
+ {% block body %} {% endblock %}
+
+</body>
+</html>

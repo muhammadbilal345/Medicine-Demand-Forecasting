@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="maindev">
+  <div class="row">
+    <div class="banner-container">
+      <div class="banner-inner">
+        <h1>PREDICTION</h1>
+      </div>
+
+      <div class="main-container row d-inline-flex flex-row ml-4">
+        <div class="predict-dropdowns col  col-4-xl flex-gap-0  mt-5">
+          <div class="col-10">
+            <label for="drug-select" class="h6">Select Location:</label>
+            <select id="drug-select" class="custom-select custom-select-md mb-3"></select>
+          </div>
+
+          <div class="col-10">
+            <label for="year-select" class="h6">Select Year:</label>
+            <select id="year-select" class="custom-select custom-select-md mb-3">
+              <option value="1">2024</option>
+              <option value="2">2025</option>
+              <option value="3">2026</option>
+              <option value="4">2027</option>
+              <option value="5">2028</option>
+            </select>
+
+            <div class="text-center">
+              <button id="predict-button" class="btn btn-dark btn-md  mt-3  btn-block "
+                onclick="predict()">Predict</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="prediction-chart col  col-8-xl ">
+          <div id="chart-title" class="text-center chartTitle">
+            Kyprolis
+          </div>
+          <div class="data-labels col-12 text-center">
+            <div class="label1 mr-3">
+              <div class="lblcolor1"></div>
+              <div class="lbltext ">
+                Previous Meter Sale Price
+              </div>
+            </div>
+
+            <div class="label2">
+              <div class="lblcolor2"></div>
+              <div class="lbltext ">
+                Predicted Meter Sale Price
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <canvas id="chart"></canvas>
+
+          </div>
+        </div>
+
+      </div>
+      <h1 style="text-align: center; margin-top: 30px;">Reviews & Ratings</h1>
+      <p id="review-rating-paragraph"></p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+  const drugsUrl = "{{ url_for('static', filename='drugs.json') }}";
+
+  fetch(drugsUrl)
+    .then(response => response.json())
+    .then(drugs => {
+      const select = document.querySelector('#drug-select');
+      drugs.forEach(drug => {
+        const option = document.createElement('option');
+        option.value = drug;
+        option.text = drug;
+        select.appendChild(option);
+      });
+    });
+
+  const chartData = {
+    labels: [],
+    datasets: [
+      {
+        label: "Meter Sale Price",
+        borderWidth: 1,
+        data: [],
+      },
+    ],
+  };
+
+  Chart.defaults.font.size = 16;
+  const selectElement = document.getElementById("drug-select");
+  const ctx = document.getElementById("chart").getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: "bar",
+    data: chartData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+          boxWidth: 200,
+          position: "top",
+        },
+        title: {
+          display: false,
+          text: "Kyprolis",
+        },
+      },
+    },
+  });
+
+  selectElement.addEventListener("change", function () {
+    const selectedValue = selectElement.options[selectElement.selectedIndex].value;
+    myChart.options.plugins.title.text = selectedValue;
+  });
+
+
+  function updateChart(data) {
+    chartData.labels = data.map((d) => d.Year);
+    chartData.datasets[0].data = data.map((d) => d["Combined Sales (packs)"]);
+
+    chartData.datasets[0].backgroundColor = chartData.labels.map(year => year <= 2023 ? "rgba(255, 99, 132, 0.2)" : "rgba(54, 162, 235, 0.2)");
+    chartData.datasets[0].borderColor = chartData.labels.map(year => year <= 2023 ? "rgba(255, 99, 132, 1)" : "rgba(54, 162, 235, 1)");
+  }
+
+  function predict() {
+  const drug = document.getElementById("drug-select").value;
+  const year = document.getElementById("year-select").value;
+  const encodedDrug = encodeURIComponent(drug);
+
+  fetch(`http://127.0.0.1:5001/predict_sales?drug=${encodedDrug}&year=${year}`)
+    .then((response) => response.json())
+    .then((data) => {
+      updateChart(data.predictions);
+      displayReviewsAndRatings(data.reviews, data.ratings);
+      myChart.update();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+  setTimeout(() => {
+    document.getElementById("chart-title").textContent = myChart.options.plugins.title.text;
+  }, 1000);
+}
+
+function displayReviewsAndRatings(reviews, ratings) {
+  const reviewRatingParagraph = document.getElementById("review-rating-paragraph");
+  reviewRatingParagraph.innerHTML = "";
+
+  for (let i = 0; i < reviews.length; i++) {
+    const reviewText = document.createElement("p");
+    // reviewText.textContent = `Review No. ${i + 1}: ${reviews[i]}`;
+    // reviewRatingParagraph.appendChild(reviewText);
+    reviewText.innerHTML = `<strong>Review No. ${i + 1}:</strong> ${reviews[i]}`;
+    reviewRatingParagraph.appendChild(reviewText);
+
+    const ratingText = document.createElement("p");
+    ratingText.innerHTML = `<strong>Rating:</strong> ${ratings[i]}`;
+
+    // ratingText.textContent = `Rating: ${ratings[i]}`;
+    reviewRatingParagraph.appendChild(ratingText);
+  }
+}
+</script>
+{% endblock %}

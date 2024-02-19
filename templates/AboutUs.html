@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="about-us">
+    <!-- <div class="about-us-heading">
+        <h2> About Us</h2>
+    </div> -->
+    <div class="about-us-inner">
+        <div class="about-us-container">
+            <div class="col-left">
+                <h3>What We Do</h3>
+                <p><span class="span-style-left">Demand forecasting of medicine using social networking data describes future customer
+                    demand of medicine by using past and current sales data of medicine.</span></p>
+      
+                <div class="col-left-bottom">
+                    <div class="bottom-left">
+                        <h4>Conclusion</h4>
+                        <p><span class="span-style-bottom">Demand forecasting of medicine using social networking data describes future customer demand of   medicine by using past and current sales data of medicine. By predicting demand forecast of medicine through social networking data describes future customer demand and growing of company.</span> </p>
+                    </div>
+                        <div class="bottom-right">
+                            <h4>Objectives</h4>
+                            <p>
+                                <span class="span-style-bottom-right">
+                                1. To provide forecasting of medicine through social networking sites.<br>
+                                2. To helps the organization for managing the present as to prepare for future demand.<br>
+                                3. To provide forecasting of medicines which will overcome unconditional situations. </span></p>
+                        </div>
+                </div>
+            </div>
+                <div class="col-right">
+                    <h3>Our Vision</h3>
+                    <img src="{{url_for('static', filename='images/vision.png')}}">
+                    <p>By predicting demand forecast of medicine through social networking data
+                        describes future customer demand and growing of company. So through review collection
+                        from social networking sites on medicine we will predict demand forecast of medicines. </p>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

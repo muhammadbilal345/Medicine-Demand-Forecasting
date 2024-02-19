@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<body style="background-color:rgb(197, 218, 247);">
+
+    <div class="backbody">
+        <div class="logo-head">
+            <img src="{{url_for('static', filename='images/banner2.png')}}">
+        </div> 
+
+        <div class="" style="position: absolute; top:60%; width: 100%; margin-top: 30px; ">
+    
+            <h1 class="text-center"> Welcome To Our Tutorial Page</h1>
+        
+        <div>
+
+            <div class="" style="width: 90%; margin: 0px auto; margin-top:30px;">
+ 
+         <h1>Services We Provide Are:</h1>
+         <p>
+              1. Providing forecasting of medicine through historical data.<br>
+              2. This will helps the organization for managing the present as to prepare for future demand.<br>
+              3. Providing forecasting of medicines which will overcome unconditional situations</p>
+         </p>
+         <h1>About Dataset:</h1>
+         <p style="overflow-wrap: break-word;">
+         The dataset is built from the initial dataset consisted of 4000 historical data collected in past 5 years <br>
+         (period 2018-2022), indicating sales price of individual medicine for an year. After going through the preprocessing<br> 
+         and all the steps, in result we got no. of units sold per year for an individual medicine.
+         </p>
+         <h1>Steps To Avail Our Services:</h1>
+         <p>
+         1. First you have to login to our page if you are not registered then register first.<br>
+         2. You have to visit our service page.<br>
+         3. Then in order to know about medicine's prediction you can choose desired medicine and the year upto which you want prediction.<br>
+         4. After submission of the information then graph would be generated to show the predictions upto desired year.<br>
+         </p>
+     </div>
+
+         </div>
+        </div>
+  
+</body>
+{% endblock %}

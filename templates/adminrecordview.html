@@ -1,0 +1,91 @@
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+<link href="{{url_for('static', filename = 'admin/css/styles.css')}}" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <div class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="{{url_for('Index') }}">Admin Panel</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <!-- <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div> -->
+            </form>
+            <!-- Navbar-->
+            
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <!-- <li><a class="dropdown-item" href="#!">Settings</a></li> -->
+                        <li><a class="dropdown-item" href="http://127.0.0.1:5000">User Homepage</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="http://127.0.0.1:5000/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading" style="font-size: 14px;">Core</div>
+                            <a class="nav-link" href="{{url_for('Index') }}">
+                                <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading" style="font-size: 14px;">Admin</div>
+                            <a class="nav-link" href="adminrecordview">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                View Records
+                            </a>
+
+                            <div class="sb-sidenav-menu-heading" style="font-size: 14px;">User</div>
+                            <a class="nav-link" href="userviewonly">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                View Records
+                            </a>
+                            <a class="nav-link" href="useredit">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Edit Records
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Admin
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="row justify-content-center" style="padding-top: 30px;">
+
+                        <h2 style="padding-left: 70px;">Admin Records</h2>
+                        {% include "adminrecordview2.html" %}
+
+                        </h1>
+
+                            </div>
+                        </div>
+                 
+                    </div>
+                </main>
+
+            </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>        -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='admin/assets/demo/chart-area-demo.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='admin/assets/demo/chart-bar-demo.js') }}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='admin/js/scripts.js') }}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static', filename='admin/js/datatables-simple-demo.js') }}"></script>

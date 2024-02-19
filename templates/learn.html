@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="upperdiv" >
+        <!-- <h2>Learn More</h2> -->
+        <div class="maindiv">
+        <div class="containor">
+            <div class="left">
+            <img src="{{url_for('static', filename='images/b4.png')}}">
+        </div>
+        <div class="right">
+            <h1>Medicine:</h1>
+            <p style="margin-left:10px;" >Demand forecasting of medicine using social networking data describes future customer demand of medicine by using past and current sales data of medicine.<br> Demand forecast cares about serving customers and growing the company. <br>But we won’t make any assumptions about what kind of data is available or on what level the forecaster is focusing, from single health center to entire economy. <br>So, this is about collecting historical data on medicines by using social networking data and then forecasting the medicines.<br></p>
+        </div>
+        </div>
+        <div class="containor">
+            <div class="right">
+                <h1>Deficiency:</h1>
+                <p style="margin-left:10px;"> Due to some unconditional situations demand of medicines increases. So, demand forecasting of medicine should be accurate to overcome this problem. Our system will focus on this problem and will help to overcome the issue.<br>In our system we are using social networking data because, recently, social network services, such as Facebook and Twitter, have become indispensable to the online activities of people, and they produce a huge amount of data on individuals' interests in everyday life.<br>Through this data we came to know how people are facing shortage of medicines and in our project, we are predicting that how much the percentage of a medicine should be required or enough in an area for future needs of people which will also be helpful to overcome unconditional situations. </p>
+            </div>
+            <div class="left">
+            <img src="{{url_for('static', filename='images/b3.png')}}">
+        </div>
+        
+        </div>
+        <div class="containor">
+            <div class="left">
+            <img src="{{url_for('static', filename='images/b2.png')}}">
+        </div>
+        <div class="right">
+            <h1>Services:</h1>
+            <p style="margin-left:10px;">Most of the forecasts are discovered by using AI, wireless networks and most of the forecast are done through machine learning. But we are using social networking data because now most of the people are connected through social media now a days and share information about current issues. So social media data sometimes are most efficient to predict a conclusion.<br>So, by predicting demand forecast of medicine through social networking data describes future customer demand and growing of company. Demand forecast cares about serving customers and growing the company. So, our project is about collecting historical data on medicines by using social networking data and then forecasting the medicines. </p>
+        </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

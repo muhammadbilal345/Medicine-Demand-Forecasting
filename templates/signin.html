@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="form">
+    <img src="{{url_for('static', filename='images/icon.png')}}">
+    <div class="container">
+        <form class="form1" method="POST" action="{{ url_for('signin') }}">
+            <h1>User</h1>
+            <input type="email" placeholder="email" name="email">
+            <input type="password" placeholder="Password" name="password">
+            <button class="sign-btn" type="submit" name="save" >Sign In</button>
+            <a href="/signup">Don't have an account?</a>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+    </div>
+</div>
+
+{% endblock %}
+
